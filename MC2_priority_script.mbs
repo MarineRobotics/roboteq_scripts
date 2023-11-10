@@ -1,0 +1,21 @@
+top:
+
+serial = 0
+RC = 1
+
+prioritySig = getvalue(_DIN, 3) ' Get status of status coming from pixhawk
+' If DIN 3 is high, flash motor 2 (sail LED)
+if prioritySig = 1 then  ' If prioritySig is high, use setconfig to set RC to highest priority, serial to second highest
+    setconfig(_CPRI, 1, RC)
+    setconfig(_CPRI, 2, serial)
+    setCommand(_M, 2, 1000)
+	wait(50)
+else
+    setconfig(_CPRI, 1, serial)
+    setconfig(_CPRI, 2, RC)
+end if
+setCommand(_M, 2, 0)
+
+wait(900)
+
+goto top

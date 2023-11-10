@@ -1,0 +1,15 @@
+top:
+prioritySig = getvalue(_DIN, 3) ' Replace 2 with the digital input on which pixhawk aux 1 is connected
+serial = 0
+RC = 1
+' If prioritySig is high, use setconfig to set RC to highest priority, serial to second highest
+' If prioritySig is low, use setconfig to set serial to highest priority, RC to second highest
+if prioritySig = 1 then
+    setconfig(_CPRI, 1, RC)
+    setconfig(_CPRI, 2, serial)
+else
+    setconfig(_CPRI, 1, serial)
+    setconfig(_CPRI, 2, RC)
+end if
+wait(100)
+goto top ' Repeat indefinitely every 100ms

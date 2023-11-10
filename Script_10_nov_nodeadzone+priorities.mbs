@@ -1,0 +1,45 @@
+top:
+
+priority = getvalue(_DIN, 3) ' Replace 2 with the digital input on which pixhawk aux 1 is connected
+serial = 0
+RC = 1
+' If prioritySig is high, use setconfig to set RC to highest priority, serial to second highest
+' If prioritySig is low, use setconfig to set serial to highest priority, RC to second highest
+if priority = 1 then
+    setconfig(_CPRI, 1, RC)
+    setconfig(_CPRI, 2, serial)
+else
+    setconfig(_CPRI, 1, serial)
+    setconfig(_CPRI, 2, RC)
+end if
+ 
+if getvalue(_E, 1) < 20 and getvalue(_E, 1) > -20   'uses loop error to adjust gains, you can change the 20 & -20 to whatever loop error works best for your case
+    setconfig(_KPG, 1, 0)        'sets "speed" Proportional gain to 0
+    setconfig(_KIG, 1, 0)        'sets "speed" integral gain to 0
+    setconfig(_KPG, 3, 0)        'sets "position" Proportional gain to 0
+    setconfig(_KIG, 3, 0)        'sets "position" integral gain to 0
+    'print("lower", "\n")
+else
+    setconfig(_KPG, 1, 1300000)    'chnage 3rd value to your "speed" proportional gain*1,000,000 (currently .065*1,000,00)
+    setconfig(_KIG, 1, 0100000)    'chnage 3rd value to your "speed" integral gain*1,000,000 (currently .075*1,000,00)
+    setconfig(_KPG, 3, 0900000)    'chnage 3rd value to your "position" proportional gain*1,000,000 (currently .7*1,000,00)
+    setconfig(_KIG, 3, 0050000)    'chnage 3rd value to your "position" integral gain*1,000,000 (currently .05*1,000,00)
+    'print("higher", "\n")
+end if
+
+if getvalue(_E, 2) < 20 and getvalue(_E, 2) > -20   'uses loop error to adjust gains, you can change the 20 & -20 to whatever loop error works best for your case
+    setconfig(_KPG, 2, 0)        'sets "speed" Proportional gain to 0
+    setconfig(_KIG, 2, 0)        'sets "speed" integral gain to 0
+    setconfig(_KPG, 4, 0)        'sets "position" Proportional gain to 0
+    setconfig(_KIG, 4, 0)        'sets "position" integral gain to 0
+    'print("lower", "\n")
+else
+    setconfig(_KPG, 2, 1300000)    'chnage 3rd value to your "speed" proportional gain*1,000,000 (currently .065*1,000,00)
+    setconfig(_KIG, 2, 0070000)    'chnage 3rd value to your "speed" integral gain*1,000,000 (currently .075*1,000,00)
+    setconfig(_KPG, 4, 0900000)    'chnage 3rd value to your "position" proportional gain*1,000,000 (currently .7*1,000,00)
+    setconfig(_KIG, 4, 0050000)    'chnage 3rd value to your "position" integral gain*1,000,000 (currently .05*1,000,00)
+    'print("higher", "\n")
+end if
+ 
+wait(10)
+goto top

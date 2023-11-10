@@ -1,0 +1,7 @@
+How to improve roboteq script:
+
+
+- New setpoint
+- Set turn sign = error sign
+- If looperr < 20 and looperr sign != turn sign:
+     stop motor
