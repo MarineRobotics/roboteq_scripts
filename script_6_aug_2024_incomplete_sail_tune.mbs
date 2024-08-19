@@ -23,10 +23,10 @@ if getvalue(_E, 1) < 20 and getvalue(_E, 1) > -20   'uses loop error to adjust g
     setconfig(_KDG, 3, 0)        'sets "position" derivative gain to 0
     'print("lower", "\n")
 else
-    setconfig(_KPG, 1, 0000000)    'chnage 3rd value to your "speed" proportional gain*1,000,000 (currently .065*1,000,00)
-    setconfig(_KIG, 1, 2500000)    'chnage 3rd value to your "speed" integral gain*1,000,000 (currently .075*1,000,00)
-    setconfig(_KDG, 1, 0000000)    'chnage 3rd value to your "speed" derivative gain*1,000,000 (currently .075*1,000,00)
-    setconfig(_KPG, 3, 40000000)    'chnage 3rd value to your "position" proportional gain*1,000,000 (currently 34*1,000,00)
+    setconfig(_KPG, 1, 0000000)    'chnage 3rd value to your "speed" proportional gain*1,000,000 (currently 0*1,000,00)
+    setconfig(_KIG, 1, 2500000)    'chnage 3rd value to your "speed" integral gain*1,000,000 (currently 2.5*1,000,00)
+    setconfig(_KDG, 1, 0000000)    'chnage 3rd value to your "speed" derivative gain*1,000,000 (currently 0*1,000,00)
+    setconfig(_KPG, 3, 40000000)    'chnage 3rd value to your "position" proportional gain*1,000,000 (currently 40*1,000,00)
     setconfig(_KIG, 3, 0000000)    'chnage 3rd value to your "position" integral gain*1,000,000 (currently 0*1,000,00)
     setconfig(_KDG, 3, 1400000)    'chnage 3rd value to your "position" derivative gain*1,000,000 (currently 1.4*1,000,00)
     'print("higher", "\n")
@@ -42,9 +42,9 @@ if getvalue(_E, 2) < 20 and getvalue(_E, 2) > -20   'uses loop error to adjust g
     setconfig(_KDG, 4, 0)        'sets "position" derivative gain to 0
     'print("lower", "\n")
 else
-    setconfig(_KPG, 2, 0000000)    'chnage 3rd value to your "speed" proportional gain*1,000,000 (currently .065*1,000,00)
-    setconfig(_KIG, 2, 5500000)    'chnage 3rd value to your "speed" integral gain*1,000,000 (currently .075*1,000,00)
-    setconfig(_KDG, 2, 0000000)    'chnage 3rd value to your "speed" derivative gain*1,000,000 (currently .075*1,000,00)
+    setconfig(_KPG, 2, 0000000)    'chnage 3rd value to your "speed" proportional gain*1,000,000 (currently 0*1,000,00)
+    setconfig(_KIG, 2, 5500000)    'chnage 3rd value to your "speed" integral gain*1,000,000 (currently 5.5*1,000,00)
+    setconfig(_KDG, 2, 0000000)    'chnage 3rd value to your "speed" derivative gain*1,000,000 (currently 0*1,000,00)
     setconfig(_KPG, 4, 34000000)    'chnage 3rd value to your "position" proportional gain*1,000,000 (currently 34*1,000,00)
     setconfig(_KIG, 4, 0000000)    'chnage 3rd value to your "position" integral gain*1,000,000 (currently 0*1,000,00)
     setconfig(_KDG, 4, 1400000)    'chnage 3rd value to your "position" derivative gain*1,000,000 (currently 1.4*1,000,00)
